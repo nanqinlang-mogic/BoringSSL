@@ -2589,7 +2589,7 @@ TEST(SSLTest, SetVersion) {
 
   // Zero is the default version.
   EXPECT_TRUE(SSL_CTX_set_max_proto_version(ctx.get(), 0));
-  EXPECT_EQ(TLS1_2_VERSION, ctx->conf_max_version);
+  EXPECT_EQ(TLS1_3_VERSION, ctx->conf_max_version);  /// EXPECT_EQ(TLS1_2_VERSION, ctx->conf_max_version);
   EXPECT_TRUE(SSL_CTX_set_min_proto_version(ctx.get(), 0));
   EXPECT_EQ(TLS1_VERSION, ctx->conf_min_version);
 
@@ -2623,7 +2623,7 @@ TEST(SSLTest, SetVersion) {
   EXPECT_FALSE(SSL_CTX_set_min_proto_version(ctx.get(), 0x1234));
 
   EXPECT_TRUE(SSL_CTX_set_max_proto_version(ctx.get(), 0));
-  EXPECT_EQ(TLS1_2_VERSION, ctx->conf_max_version);
+  EXPECT_EQ(TLS1_3_VERSION, ctx->conf_max_version);  /// EXPECT_EQ(TLS1_2_VERSION, ctx->conf_max_version);
   EXPECT_TRUE(SSL_CTX_set_min_proto_version(ctx.get(), 0));
   EXPECT_EQ(TLS1_1_VERSION, ctx->conf_min_version);
 }
