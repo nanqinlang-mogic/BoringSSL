@@ -446,8 +446,11 @@ namespace bssl {
 #define SSL_AES256               0x00000004u
 #define SSL_AES128GCM            0x00000008u
 #define SSL_AES256GCM            0x00000010u
-#define SSL_eNULL                0x00000020u
-#define SSL_CHACHA20POLY1305     0x00000040u
+#define SSL_CHACHA20POLY1305_OLD 0x00000020u
+#define SSL_eNULL                0x00000040u
+#define SSL_CHACHA20POLY1305     0x00000080u
+/// #define SSL_eNULL                0x00000020u
+/// #define SSL_CHACHA20POLY1305     0x00000040u
 
 #define SSL_AES (SSL_AES128 | SSL_AES256 | SSL_AES128GCM | SSL_AES256GCM)
 

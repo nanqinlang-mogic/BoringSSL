@@ -109,7 +109,9 @@ static const CipherTest kCipherTests[] = {
         "ECDHE-RSA-AES128-GCM-SHA256",
         {
             {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256, 0},
         },
@@ -124,8 +126,10 @@ static const CipherTest kCipherTests[] = {
         "+aRSA",
         {
             {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
             {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256, 0},
         },
         false,
@@ -139,6 +143,7 @@ static const CipherTest kCipherTests[] = {
         "ECDHE-RSA-AES128-GCM-SHA256",
         {
             {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
         },
         false,
@@ -173,7 +178,9 @@ static const CipherTest kCipherTests[] = {
         "BOGUS1",
         {
             {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256, 0},
         },
@@ -188,7 +195,9 @@ static const CipherTest kCipherTests[] = {
         "-BOGUS2:+BOGUS3:!BOGUS4",
         {
             {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256, 0},
         },
@@ -201,8 +210,11 @@ static const CipherTest kCipherTests[] = {
         "ECDHE-RSA-AES128-GCM-SHA256",
         {
             {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 1},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 1},
             {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
-            {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 1},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
+            /// {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256, 0},
         },
         false,
@@ -215,8 +227,11 @@ static const CipherTest kCipherTests[] = {
         "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
         {
             {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 1},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 1},
             {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
-            {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 1},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
+            /// {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256, 0},
         },
         false,
@@ -226,7 +241,7 @@ static const CipherTest kCipherTests[] = {
     {
         // To simplify things, banish all but {ECDHE_RSA,RSA} x
         // {CHACHA20,AES_256_CBC,AES_128_CBC} x SHA1.
-        "!AESGCM:!3DES:!SHA256:!SHA384:"  /// "!AESGCM:!3DES:"
+        "!kEDH:!AESGCM:!3DES:!SHA256:!MD5:!SHA384:"  //// "!AESGCM:!3DES:!SHA256:!SHA384:"  /// "!AESGCM:!3DES:"
         // Order some ciphers backwards by strength.
         "ALL:-CHACHA20:-AES256:-AES128:-ALL:"
         // Select ECDHE ones and sort them by strength. Ties should resolve
@@ -238,6 +253,7 @@ static const CipherTest kCipherTests[] = {
         {
             {TLS1_CK_ECDHE_RSA_WITH_AES_256_CBC_SHA, 0},
             {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_CBC_SHA, 0},
             {TLS1_CK_RSA_WITH_AES_128_SHA, 0},
             {TLS1_CK_RSA_WITH_AES_256_SHA, 0},
@@ -263,10 +279,12 @@ static const CipherTest kCipherTests[] = {
         "ECDHE-RSA-AES256-GCM-SHA384:"
         "@STRENGTH+AES256:"
         "ECDHE-RSA-CHACHA20-POLY1305",
+        "ECDHE-RSA-CHACHA20-POLY1305-OLD",
         {
             {TLS1_CK_ECDHE_RSA_WITH_AES_256_GCM_SHA384, 0},
             {TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256, 0},
             {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
         },
         false,
     },
@@ -318,6 +336,22 @@ static const CipherTest kCipherTests[] = {
             {TLS1_CK_RSA_WITH_AES_256_SHA, 0},
             {TLS1_CK_RSA_WITH_AES_256_SHA256, 0},  //// {TLS1_CK_RSA_WITH_AES_256_SHA384, 0},  /// {TLS1_CK_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, 0},
             {TLS1_CK_RSA_WITH_AES_128_GCM_SHA256, 0},
+        },
+        false,
+    },
+    // The shared name of the CHACHA20_POLY1305 variants behaves like a cipher
+    // name and not an alias. It may not be used in a multipart rule. (That the
+    // shared name works is covered by the standard tests.)
+    {
+        "ECDHE-ECDSA-CHACHA20-POLY1305:"
+        "ECDHE-RSA-CHACHA20-POLY1305:"
+        "!ECDHE-RSA-CHACHA20-POLY1305+RSA:"
+        "!ECDSA+ECDHE-ECDSA-CHACHA20-POLY1305",
+        {
+            {TLS1_CK_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_ECDSA_CHACHA20_POLY1305_OLD, 0},
+            {TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, 0},
+            {TLS1_CK_ECDHE_RSA_CHACHA20_POLY1305_OLD, 0},
         },
         // …but not in strict mode.
         true,
@@ -920,6 +954,15 @@ TEST(SSLTest, CipherProperties) {
           TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
           "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
           NID_chacha20_poly1305,
+          NID_undef,
+          NID_kx_ecdhe,
+          NID_auth_rsa,
+          NID_sha256,
+      },
+      {
+          TLS1_CK_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256_OLD,
+          "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256_OLD",
+          NID_chacha20_poly1305_old,
           NID_undef,
           NID_kx_ecdhe,
           NID_auth_rsa,
